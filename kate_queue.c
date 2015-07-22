@@ -9,11 +9,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+//circular queue
+
 #define boolean int
 #define true 1
 #define false 0
 
 int MAXLENGTH = 1;
+
+//처음에 front 와 rear를 -1로 초기화하고 풀었을 때, 오류가 났다.
 int front = 0;
 int rear = 0;
 
@@ -27,6 +32,8 @@ boolean isEmptyQueue();
 
 
 int* creatQueue(int userMAX){
+    
+    //처음에 circular queue 중 사용하지 않는 하나의 공간을 생각하지 못해서 오류가 났다.
     MAXLENGTH = userMAX + 1;
     return (int*)malloc( sizeof(int) * MAXLENGTH );
 }
@@ -77,7 +84,8 @@ boolean isEmptyQueue(){
 void printQueue(int* queue){
     int i = (front + 1) % MAXLENGTH;
     
-    
+ 
+    //rear가 제일 끝에 있을 때, 두번째 조건(i != front)이 없으면 무한루프를 돈다.
     while(i <= rear && i != front) {
         printf("%3d", queue[i]);
         

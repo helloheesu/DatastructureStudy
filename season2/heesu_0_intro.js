@@ -15,11 +15,26 @@ function countNodes (root) {
   return count;
 }
 
+function countInternalNodes (root) {
+	var count = 0;
+	var stack = [];
+	stack.push(root);
+	var currentNode;
+	while (stack.length > 0) {
+		currentNode = stack.pop();
+		if (!currentNode || (!currentNode.left && !currentNode.right)) {
+			continue;
+		}
+		count++;
+		stack.push(currentNode.left, currentNode.right);
+	}
+	return count;
+}
+
+
 var root = {
 	val:null
 };
-countNodes(root);
-
 
 var node1 = {val:1}, 
 node2 = {val:2},
@@ -46,50 +61,20 @@ var root = node1;
 
 countNodes(root);
 
-
-function countInternalNodes (root) {
-	var count = 0;
-	var stack = [];
-	stack.push(root);
-	var currentNode;
-	while (stack.length > 0) {
-		currentNode = stack.pop();
-		if (!currentNode || (!currentNode.left && !currentNode.right)) {
-			continue;
-		}
-		count++;
-		stack.push(currentNode.left, currentNode.right);
-	}
-	return count;
-}
 countInternalNodes(root);
 
 
 
-
-function sortLast (array) {
-	for (var i = array.length - 1; i > 0; i--) {
-		if (array[i] < array[i-1]) {
-			var temp = array[i];
-			array[i] = array[i-1];
-			array[i-1] = temp;
-		} else {break;}
-	};
+function sortLast(array) {
+	var len = array.length;
+	var lastElement = array[len-1];
+	for (var prePos = len-2; prePos >= 0 && array[prePos] > lastElement; prePos--) {
+		array[prePos+1] = array[prePos];
+	}
+	array[prePos+1] = lastElement;
 	return array;
 }
 
 var t = [1,7,9,10,20,30,8];
-console.log(t, sortLast(t));
-
-function sortLast (array) {
-	var resultIndex = array.length - 1;
-	var insertElement = array[resultIndex];
-
-	var prePosOfNum = resultIndex-1;
-	while (array[resultIndex] < array[prePosOfNum]) {
-		array[prePosOfNum+1] = array[prePosOfNum];
-		prePosOfNum++;
-	}
-	array[prePosOfNum] = insertElement
-	return array;
-}
+console.log(t);
+console.log(sortLast(t));

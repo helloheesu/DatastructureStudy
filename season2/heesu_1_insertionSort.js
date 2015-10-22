@@ -42,6 +42,13 @@ var testArray = [-1,0,4];
 console.log(testArray);
 console.log('result',insertionSort(testArray));
 
+var testArray = [2,2,2];
+console.log(testArray);
+console.log('result',insertionSort(testArray));
+var testArray = [1,0,0,0,-2];
+console.log(testArray);
+console.log('result',insertionSort(testArray));
+
 function isSorted (array) {
 	for (var i = 0; i< array.length - 1; i++) {
 		if (array[i] > array[i+1]) {
@@ -78,5 +85,12 @@ var testArray = [0];
 console.log(testArray);
 console.log('result',isSorted(testArray));
 var testArray = [-1,0,4];
+console.log(testArray);
+console.log('result',isSorted(testArray));
+
+var testArray = [2,2,2];
+console.log(testArray);
+console.log('result',isSorted(testArray));
+var testArray = [1,0,0,0,-2];
 console.log(testArray);
 console.log('result',isSorted(testArray));

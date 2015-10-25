@@ -5,7 +5,7 @@
 - Input: A sequence of _n_ numbers _A = {a1, a2, ..., an}_ and a value _v_.
 - Output: An index _i_ such that _v = A[i]_ or the special value _NIL_ if _v_ does not appear in _A_.
 
-- Write pseudocode for linear search, which scans through the sequence, looking for _v_. Using a loop invariant, prove that your algorithm is correct. Make sure that your loop invariant fulﬁlls the three necessary properties.
+- Write pseudocode for linear search, which scans through the sequence, looking for _v_. Using a loop invariant, prove that your algorithm is correct. Make sure that your loop invariant fulﬁlls the three necessary properties.
 
 # Pseudo code
 ```

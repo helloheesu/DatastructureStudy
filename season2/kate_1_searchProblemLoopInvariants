@@ -1,0 +1,16 @@
+[Search Problem Loop Invariants]
+
+idxSearched 변수는 입력된 배열 안에 찾는 값이 없으면 -2, 있으면 배열 안 인덱스 값을 가지고 있다.
+
+Initialization: 
+배열을 탐색하기 전, 찾는 값이 있어도 몇 번째 인덱스인지 알지 못한다. 값은 -2이다.
+
+Maintenance:
+반복 한번 수행한 후, 해당 i인데스 값이 찾는 값이었다면 idxSearched 값은 i가 되고, 찾는 값이 아니라면 그대로 -2이다.
+
+Termination:
+찾는 값이 있었다면, idxSearched는 for문의 if문 블럭 안에서 해당 인덱스 값으로 바뀐다. 찾는 값이 없다면, idxSearched는 그대로 -2이다.
+
+따라서, 이 for문은 search problem을 타당히 수행한다.
+
+

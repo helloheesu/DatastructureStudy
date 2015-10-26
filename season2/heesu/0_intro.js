@@ -1,7 +1,7 @@
 function countNodes (root) {
   var count = 0;
   var stack = [];
-  if (!root || !root.val) {
+  if (!root) {
   	return 0;
   }
   stack.push(root);

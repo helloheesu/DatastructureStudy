@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 
-void divide(int arr[], int left, int right)
+void mergeSort(int arr[], int left, int right)
 {
     int mid;
     
@@ -55,9 +55,9 @@ void merge(int arr[], int left, int mid, int right)
     }
 
 
-        for(i=left; i<=right; i++)
+        for(i=left; i<=right; i++){
         arr[i]=mergeArr[i];
-    
+        }
         free(mergeArr);
 }
 
@@ -65,7 +65,7 @@ int main(int argc, const char * argv[]) {
 
     int i;
     int arr[10] = {5,2,6,9,1,3,4,7,8,10};
-    divide(arr, 0, 9);
+    mergeSort(arr, 0, 9);
     
     for(i=0; i<10; i++)
     {

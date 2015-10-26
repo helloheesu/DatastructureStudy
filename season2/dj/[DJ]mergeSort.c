@@ -48,7 +48,7 @@ void merge(int arr[], int left, int mid, int right)
         for(i=rear; i<=right; i++)
         mergeArr[mergeIdx]=arr[i];
     }
-    else            //배열의 앞 부분만 남았을 때
+    else if(front<=mid)            //배열의 앞 부분만 남았을 때
     {
             for(i=front; i<=mid; i++)
             mergeArr[mergeIdx]=arr[i];

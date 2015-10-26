@@ -45,8 +45,8 @@ void merge(int arr[], int left, int mid, int right)
     
     if(front > mid) //두 개의 배열 중 앞부분 배열이 먼저 다 정렬 되었고, 뒷부분의 배열만 남았을 때,
     {
-        for(i=front; i<=right; i++)
-            mergeArr[mergeIdx]=arr[i];
+        for(i=rear; i<=right; i++)
+        mergeArr[mergeIdx]=arr[i];
     }
     else            //배열의 앞 부분만 남았을 때
     {

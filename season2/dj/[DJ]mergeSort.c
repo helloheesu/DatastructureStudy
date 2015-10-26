@@ -16,7 +16,7 @@ void divide(int arr[], int left, int right)
     if(left<right){
         
     
-    mid=(left+right);
+    mid=(left+right)/2;
     
     merge(arr, left, mid); //left~mid에 위치한 데이터 정렬!
     merge(arr, mid+1, right); //mid+1~right에 위치한 데이터 정렬

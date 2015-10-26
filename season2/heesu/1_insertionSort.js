@@ -94,3 +94,8 @@ console.log('result',isSorted(testArray));
 var testArray = [1,0,0,0,-2];
 console.log(testArray);
 console.log('result',isSorted(testArray));
+/* occurs error. should deal with unexpected types.
+var testArray = [2, undefined, -1, 4];
+console.log(testArray);
+console.log('result',isSorted(testArray));
+*/

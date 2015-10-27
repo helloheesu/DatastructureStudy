@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
 
 
 //배열 안에 찾는 값이 있으면 해당 인덱스 반환, 없으면 NULL.
-int searchIdxOfCertainValue(int arr[], int value,int arrLen){
+int searchIdxOfCertainValue(int arr[], int arrLen, int value){
     if(!arr) return  -1; //check an unusual case.
     
     int idxSearched = -2;

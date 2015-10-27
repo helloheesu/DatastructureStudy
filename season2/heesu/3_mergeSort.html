@@ -36,7 +36,7 @@ function mergeSort(array, startIdx, endIdx) {
 function merge(array, aStart, aEnd, bStart, bEnd) { // bStart = aEnd + 1
   var result = [], aIdx = aStart, bIdx = bStart;
   while(aIdx <= aEnd || bIdx <= bEnd) {
-    if (bIdx <= bEnd && (aIdx >= aEnd || array[aIdx] >= array[bIdx])) {
+    if ((bIdx <= bEnd && aIdx > aEnd) || array[aIdx] >= array[bIdx]) {
       result.push(array[bIdx]);
       bIdx++;
     } else {

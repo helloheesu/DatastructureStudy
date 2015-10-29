@@ -9,9 +9,7 @@
 <script src="3_mergeSort.js"></script>
 <script>
 QUnit.test("merge sort test", function (assert) {
-  var input = [4,3,2,1];
-  mergeSort(input, 0, 3);
-  ok(true, isSorted(input));
+  ok(true, isSorted(mergeSort([4,3,2,1])));
 });
 </script>
 </head>

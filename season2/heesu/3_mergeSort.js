@@ -1,29 +1,42 @@
 function mergeSort(array, startIdx, endIdx) {
-  if(startIdx >= endIdx) {
-    return;
+  if (!array || !(length in array)) {
+    return array;
   }
-  var divideIdx = startIdx + ~~((endIdx-startIdx)/2);
-  mergeSort(array, startIdx, divideIdx);
-  mergeSort(array, divideIdx +1, endIdx);
-  return merge(array, startIdx, divideIdx, divideIdx +1, endIdx);
+  if (typeof startIdx == "undefined") startIdx = 0;
+  if (typeof endIdx == "undefined") endIdx = array.length-1;
+  if (startIdx >= endIdx) {
+    return array;
+  }
+
+  var midIdx = startIdx + ~~((endIdx - startIdx)/2);
+  mergeSort(array, startIdx, midIdx);
+  mergeSort(array, midIdx+1, endIdx);
+  merge(array, startIdx, midIdx, endIdx);
+
+  return array;
 }
 
-function merge(array, aStart, aEnd, bStart, bEnd) { // bStart = aEnd + 1
-  var result = [], aIdx = aStart, bIdx = bStart;
-  while(aIdx <= aEnd || bIdx <= bEnd) {
-    if (bIdx <= bEnd && (aIdx >= aEnd || array[aIdx] >= array[bIdx])) {
-      result.push(array[bIdx]);
-      bIdx++;
+function merge (array, left, mid, right) {
+  var aStart = left, aEnd = mid, bStart = mid+1, bEnd = right;
+  var aIdx = aStart, bIdx = bStart;
+  var result = [];
+
+  while (aIdx <= aEnd && bIdx <= bEnd) {
+    if (array[aIdx] < array[bIdx]) {
+      result.push(array[aIdx++]);
     } else {
-      result.push(array[aIdx]);
-      aIdx++;
+      result.push(array[bIdx++]);
     }
   }
-  spliceArray(array, aStart, bEnd+1, result);
-}
 
-function spliceArray(originalArray, start, end, replaceArray) {
-  for (var i = 0; i < end-start; i++) {
-    originalArray[i + start] = replaceArray[i];
+  while (aIdx <= aEnd) {
+    result.push(array[aIdx++]);
+  }
+  while (bIdx <= bEnd) {
+    result.push(array[bIdx++]);
+  }
+
+  for (var i = 0; i < result.length; i++) {
+    array[left+i] = result[i];
   }
 }

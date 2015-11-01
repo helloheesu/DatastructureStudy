@@ -8,6 +8,7 @@ function mergeSort(array, startIdx, endIdx) {
     return array;
   }
 
+  // `~~number` is shorthand for Math.floor()
   var midIdx = startIdx + ~~((endIdx - startIdx)/2);
   mergeSort(array, startIdx, midIdx);
   mergeSort(array, midIdx+1, endIdx);

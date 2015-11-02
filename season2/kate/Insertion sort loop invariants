@@ -1,0 +1,18 @@
+Insertion sort loop invariants
+
+1. arr[0, i-1]은 오름차순으로 되어 있다.
+2. arr[i+1, arrlen-1]의 요소는 모두 arr[i]보다 크다.
+
+<initialization>
+i = 1일 때, arr[0, 0]은 원소 하나이므로 이미 오름차순이다.
+
+<maintenance>
+i = k일 때, 반복문 불변식을 만족한다고 하자.
+즉, arr[0, k-1]은 오름차순으로 되어 있다.
+
+i = k+1 일때, [0 ~ k]의 원소들은 arr[k+1]보다 크면 한칸씩 뒷 인덱스로 이동하고, 작거나 같으면 해당자리에 arr[k+1]를 넣는다.
+따라서 arr[0, k]도 오름차순이 된다.
+
+<termination>
+i = arrlen일 때, arr[0, arr-1]은 오름차순으로 정렬되어 있다.
+

@@ -11,6 +11,7 @@
 void mergeSort(int* arr, int startIdx, int endIdx);
 void merge(int* arr, int formerIdx, int formerEnd, int latterIdx, int latterEnd);
 void printArray(int* arr, int arrlen);
+int isSorted(int* arr, int arrlen);
 void showTestResult(int* arr, int arrlen);
 
 
@@ -36,18 +37,23 @@ int main(int argc, const char * argv[]) {
     int arrLen22 = (int)sizeof(arr22) / sizeof(int);
     showTestResult(arr22, arrLen22);
     
-    //case 3.1 - three elements, incremented
-    int arr3[3] = {1, 50, 101};
+    //case 2.3 - two elements, same
+    int arr23[2] = {51,51};
+    int arrLen23 = (int)sizeof(arr23) / sizeof(int);
+    showTestResult(arr23, arrLen23);
+    
+    //case 3.1 - many elements, incremented
+    int arr3[20] = {1,2,3,4,5,6,7,8,9,50, 61,62,63,64,65,66,67,68,69, 101};
     int arrLen3 = (int)sizeof(arr3) / sizeof(int);
     showTestResult(arr3, arrLen3);
 
     //case 3.2 - three elements, decremented
-    int arr32[3] = {101, 23 , 1};
+    int arr32[20] = {99, 97, 95., 93, 91, 89, 87, 85, 83, 81, 79, 77, 75, 73, 71, 69, 67, 65, 63, 61};
     int arrLen32 = (int)sizeof(arr32) / sizeof(int);
     showTestResult(arr32, arrLen32);
     
     //case 3.3 - three elements, randomed
-    int arr33[3] = {33 , 1, 99};
+    int arr33[10] = {33 , 33, 33, 33, 33, 33, 33, 33, 33, 33};
     int arrLen33 = (int)sizeof(arr33) / sizeof(int);
     showTestResult(arr33, arrLen33);
     
@@ -113,6 +119,7 @@ void merge(int* arr, int formerIdx, int formerEnd, int latterIdx, int latterEnd)
         arr[i] = tempArr[tempIdx];
         i++;
     }
+    free(tempArr);
     //debug// printArray(arr, arrLen);
 }
 
@@ -129,12 +136,32 @@ void printArray(int* arr,int arrlen){
     puts(" ");
 }
 
+int isSorted(int* arr, int arrlen){
+    if(!arr || arrlen == 0){
+        printf("No Array Input to check.\n");
+        return -1;
+    }
+    int isSorted = 1;
+    int i =0;
+    
+    for(i = 0 ; i < arrlen-1 ; i++){
+        if( arr[i] > arr[i+1]) isSorted = 0;
+    }
+    
+    return isSorted;
+}
+
 void showTestResult(int* arr, int arrlen){
     printf("Before sorting: \n");
     printArray(arr, arrlen);
     mergeSort(arr, 0, arrlen-1);
     printf("After sorting: \n");
     printArray(arr, arrlen);
+        
+    int isSortedResult = isSorted(arr, arrlen);
+    printf("The result is ");
+    if(isSortedResult == 1) printf("sorted.\n");
+    else printf("NOT sorted.\n");
     puts(" ");
     
     return;

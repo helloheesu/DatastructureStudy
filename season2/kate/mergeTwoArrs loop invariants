@@ -1,0 +1,11 @@
+mergeTwoArrs loop invariants
+
+
+newArr[0, newIdx]는 arr1[0, i]와 arr2[0, j]의 원소들을 오름차순으로 가지고 있다. 그 수는 newIdx +1 = (i+1) + (j+1)개 이다.
+
+
+<initialization>
+
+<maintenance>
+
+<termination> 

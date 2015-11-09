@@ -46,13 +46,19 @@ int countInternalNode(node_t* root){
         return -1;
     
     int count = 0;
+    /*
     if(!(root->leftchild) && !(root->rightchild) ) count += 0;
     else {
         count++;
         if(root->leftchild) count += countInternalNode(root->leftchild);
         if(root->rightchild) count += countInternalNode(root->rightchild);
     }
-    
+    */
+    if((root->leftchild) || (root->rightchild)){
+        count++;
+        if(root->leftchild) count += countInternalNode(root->leftchild);
+        if(root->rightchild) count += countInternalNode(root->rightchild);
+    }
     return count;
 }
 

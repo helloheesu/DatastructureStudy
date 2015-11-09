@@ -1,0 +1,60 @@
+<!--DOCTYPE html-->
+<html>
+<head>
+	<title>maximum subarray test</title>
+
+	<link rel="stylesheet" href="library/qunit.css">
+	<script src="library/jquery.js"></script>
+	<script src="library/qunit.js"></script>
+	<script src="util.js"></script>
+	<script src="4_maximumSubarray.js"></script>
+
+	<script>
+	function getSubsum (array, start, end) {
+		var result = 0;
+		for (var i = start; i <= end; i++) {
+			result += array[i];
+		}
+		return result;
+	}
+
+	testCaseSample = [
+		{'input' : [3,2,-7,6,-100,1000,-30,-20,60,0,-2], 'expected' : [1010,5,9], 'start' : 0, 'end' : 10},
+		{'input' : [3,2,-7,6,-100,1000,-30,-20,60,0,-2], 'expected' : [5,0,1], 'start' : 0, 'end' : 2},
+	];
+
+	QUnit.test("maxSubarray cross", function (assert) {
+	  for (var i = 0; i < testCaseSample.length; i++) {
+	  	var testArray = testCaseSample[i]['input'];
+	  	var expected = testCaseSample[i]['expected'];
+	  	var start = testCaseSample[i]['start'], end = testCaseSample[i]['end'];
+	  	var mid = getMiddleIdx(start, end);
+	  	var result = getMaxCrossingSubarray(testArray, start, end);
+
+	  	assert.ok(result[1] <= mid, result[1]+' is on left of '+mid);
+	  	assert.ok(mid+1 <= end, result[2]+' is on right of '+ (parseInt(mid)+1) );
+	  	assert.ok(getSubsum(testArray, result[1], result[2]) >= expected[0],
+	  		'['+testArray+'] ['+result[1]+'~'+result[2]+'] >= '+expected[0]);
+	  }
+	});
+
+	QUnit.test("maxSubarray total", function (assert) {
+	  for (var i = 0; i < testCaseSample.length; i++) {
+	  	var testArray = testCaseSample[i]['input'];
+	  	var expected = testCaseSample[i]['expected'];
+	  	var start = testCaseSample[i]['start'], end = testCaseSample[i]['end'];
+	  	var result = getMaxSubarray(testArray, start, end);
+
+	  	assert.ok(getSubsum(testArray, result[1], result[2]) >= expected[0],
+	  		'['+testArray+'] ['+result[1]+'~'+result[2]+'] >= '+expected[0]);
+	  }
+	});
+
+	</script>
+</head>
+
+<body>
+	<div id="qunit"></div>
+</body>
+
+</html>

@@ -8,3 +8,6 @@ function isSorted (array) {
 	return true;
 }
 
+function getMiddleIdx (startIdx, endIdx) {
+	return startIdx + ~~((endIdx-startIdx)/2);
+}

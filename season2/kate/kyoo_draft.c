@@ -16,8 +16,9 @@ void showTestResult(int* arr);
 
 int main(int argc, const char * argv[]) {
    
-    int arr1[] = {-9,2,3,1};
+    int arr1[] = {-9,-8, 2,3,1,4};
     int arrlen1 = (int) sizeof(arr1)/sizeof(int);
+    printf("len: %d\n", arrlen1);
     
     showTestResult(findMaxiumSubarray(arr1, 0, arrlen1-1));
     
@@ -48,7 +49,7 @@ int* findCrossMaixSubarray(int* arr, int low, int mid, int high){
     int maxPosRight = mid +1;
     
     while(j <= high){
-        curSum += arr[i];
+        curSum += arr[j];
         if(curSum > maxSumRight){
             maxSumRight = curSum;
             maxPosRight = j;

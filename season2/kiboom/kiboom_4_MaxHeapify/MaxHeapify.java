@@ -7,18 +7,18 @@ public class MaxHeapify {
 			return;
 		}
 		
-		int leftSubPos = 2*pos;
-		int rightSubPos = leftSubPos+1;
+		int leftChildPos = 2*pos;
+		int rightChildPos = leftChildPos+1;
 		int largestPos = pos;
 		
 		int heapSize = heap.getSize();
 		int[] heapElements = heap.getElements();
 		
-		if(leftSubPos <= heapSize && heapElements[leftSubPos] > heapElements[pos]){
-			largestPos = leftSubPos;
+		if(leftChildPos <= heapSize && heapElements[leftChildPos] > heapElements[pos]){
+			largestPos = leftChildPos;
 		}
-		if(rightSubPos <= heapSize && heapElements[rightSubPos] > heapElements[largestPos]){
-			largestPos = rightSubPos;
+		if(rightChildPos <= heapSize && heapElements[rightChildPos] > heapElements[largestPos]){
+			largestPos = rightChildPos;
 		}
 		if(largestPos != pos){
 			swap(heapElements, pos, largestPos);

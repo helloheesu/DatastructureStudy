@@ -48,22 +48,13 @@ int isMaxHeap(heap_t* heap, int pos){
     int right = left +1;
     
     if( left > heap->size ) return 1;
-    if( left <= heap-> size ) {
-        if( heap->element[left] > heap->element[pos]) return 0;
-        needOneMoreTimeForLeft = true;
-    }
+    if( heap->element[left] > heap->element[pos]) return 0;
     if( right <= heap-> size ) {
         if( heap->element[right] > heap->element[pos]) return 0;
-        needOneMoreTimeForRight = true;
-    }
-    
-    if(needOneMoreTimeForRight){
         isMaxHeap(heap, right);
-        isMaxHeap(heap, left);
-    }else if(needOneMoreTimeForLeft){
-        isMaxHeap(heap, left);
     }
-        
+    isMaxHeap(heap, left);
+
     return 1;
 }
 

@@ -69,7 +69,6 @@ void buildMaxHeap(heap_t *heap)
 
 heap_t* makeSampleHeap(int numOfNode)
 {
-    // 예외처리
     if(numOfNode < 0)
         return NULL;
     

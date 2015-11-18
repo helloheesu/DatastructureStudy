@@ -135,8 +135,6 @@ void printHeap(heap_t *heap)
 }
 
 
-
-// main 함수
 int main(void)
 {
     int numOfNode;

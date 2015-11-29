@@ -27,7 +27,7 @@ void increaseMaxHeapKey(heap_t* heap, int index, int keyIncreased){
 heap_t* insertInMaxheap(heap_t* heap, int key){
     if(!heap) return NULL;
     
-    heap_t *newHeap = makeSampleHeap(heap->size + 1);
+    heap_t *newHeap = heapAlloc(heap->size + 1);
     
     for(int i = 1; i <= heap->size; i++)
         newHeap->element[i] = heap->element[i];

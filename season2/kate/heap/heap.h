@@ -17,7 +17,7 @@ typedef struct heap{
     int *element;
 }heap_t;
 
-heap_t* makeSampleHeap(int n);
+heap_t* heapAlloc(int n);
 int isMaxHeap(heap_t* heap, int pos);
 void printHeap(heap_t* heap);
 

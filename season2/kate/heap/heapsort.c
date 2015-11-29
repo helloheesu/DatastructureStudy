@@ -28,7 +28,7 @@ void testHeapSort(int *arr, int arrSize){
 void heapSort(int* arr, int arrSize){
     if(!arr) return;
     
-    heap_t *tempHeap = makeSampleHeap(arrSize);
+    heap_t *tempHeap = heapAlloc(arrSize);
     
     for(int i = 0; i<arrSize; i++)
         tempHeap->element[i+1] = arr[i];

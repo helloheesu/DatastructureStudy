@@ -22,22 +22,22 @@ int main(){
     heap_t *root0 = NULL;
     testHeapify(root0);
     
-    heap_t *root1 = makeSampleHeap(1);
+    heap_t *root1 = heapAlloc(1);
     root1->element[1] = 1;
     testHeapify(root1);
     
-    heap_t *root2 = makeSampleHeap(2);
+    heap_t *root2 = heapAlloc(2);
     root2->element[1] = 2;
     root2->element[2] = 1;
     testHeapify(root2);
   
-    heap_t *root22 = makeSampleHeap(2);
+    heap_t *root22 = heapAlloc(2);
     root22->element[1] = 2;
     root22->element[2] = 3;
     testHeapify(root22);
     root22 = testInsertInMaxHeap(root22, 4);
  
-    heap_t *root3 = makeSampleHeap(3);
+    heap_t *root3 = heapAlloc(3);
     root3->element[1] = 4;
     root3->element[2] = 5;
     root3->element[3] = 6;
@@ -46,19 +46,19 @@ int main(){
     root3 = testInsertInMaxHeap(root3, 10);
     root3 = testInsertInMaxHeap(root3, 2);
     
-    heap_t *root32 = makeSampleHeap(3);
+    heap_t *root32 = heapAlloc(3);
     root32->element[1] = 8;
     root32->element[2] = 9;
     root32->element[3] = 7;
     testHeapify(root32);
     
-    heap_t *root33 = makeSampleHeap(3);
+    heap_t *root33 = heapAlloc(3);
     root33->element[1] = 12;
     root33->element[2] = 10;
     root33->element[3] = 11;
     testHeapify(root33);
     
-    heap_t *root4 = makeSampleHeap(4);
+    heap_t *root4 = heapAlloc(4);
     root4->element[1] = 13;
     root4->element[2] = 16;
     root4->element[3] = 15;
@@ -69,18 +69,18 @@ int main(){
     testMaxHeap(maxHeap0);
     testExtractMax(maxHeap0);
     
-    heap_t *maxHeap1 = makeSampleHeap(1);
+    heap_t *maxHeap1 = heapAlloc(1);
     maxHeap1->element[1] = 1;
     testMaxHeap(maxHeap1);
     testExtractMax(maxHeap1);
     
-    heap_t *maxHeap2 = makeSampleHeap(2);
+    heap_t *maxHeap2 = heapAlloc(2);
     maxHeap2->element[1] = 2;
     maxHeap2->element[2] = 3;
     testMaxHeap(maxHeap2);
     testExtractMax(maxHeap2);
     
-    heap_t *maxHeap3 = makeSampleHeap(3);
+    heap_t *maxHeap3 = heapAlloc(3);
     maxHeap3->element[1] = 5;
     maxHeap3->element[2] = 4;
     maxHeap3->element[3] = 6;
@@ -88,7 +88,7 @@ int main(){
     testExtractMax(maxHeap3);
     testExtractMax(maxHeap3);
     
-    heap_t *maxHeap4 = makeSampleHeap(4);
+    heap_t *maxHeap4 = heapAlloc(4);
     maxHeap4->element[1] = 8;
     maxHeap4->element[2] = 7;
     maxHeap4->element[3] = 9;

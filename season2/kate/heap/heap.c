@@ -8,7 +8,7 @@
 
 #include "heap.h"
 
-heap_t* makeSampleHeap(int n){
+heap_t* heapAlloc(int n){
     
     heap_t *root = (heap_t*)malloc(sizeof(heap_t));
     root->element = (int*)malloc(sizeof(int)* (n+1));

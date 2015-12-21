@@ -1,51 +1,160 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
+typedef struct heap {
+    int size;
+    int *element;
+} heap_t;
 
-void buildHeap(int arr[], int size)
+typedef enum {false, true} bool;
+
+void swap(int* a, int* b)
 {
-    int i = size/2;
-    while(i > 0) 
-        heapify(arr, size, i--);
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
-
-void heapify(int arr[], int size,  int id)
+void max_heapify(heap_t* heap, int pos)
 {
     
-    int childLeft = 0, childRight = 0;
-    int MAXIdx = id;
-   
-    if(arr[2*id])
-        leftChild = 2*id;
-    if(arr[2*id + 1])
-        rightChild = 2*id + 1;
-    if(arr[childLeft] > arr[id])
-        MAXIdx = leftChild;
-    if(arr[childRight] > arr[largest])
-        MAXIdx = rightChild;
-
-    if(MAXIdx != id)
+    if(heap == NULL || heap->element == NULL || pos <= 0)
+        return;
+    
+    int leftChild;
+    int rightChild;
+    int maxNode;
+    
+    leftChild = pos * 2;
+    rightChild = pos * 2 + 1;
+    
+    if(leftChild <= heap->size && heap->element[leftChild] > heap->element[pos])
     {
-        swap(arr, id, MAXIdx);
-        heapify(arr, size, id);
+        maxNode = leftChild;
+    } else {
+        maxNode = pos;
     }
     
-}
-
-void swap(int *arr, int id, int MAXIndex)
-{
-    int temp = arr[id];
-    arr[id] = arr[MAXIndex];
-    arr[MAXIndex] = temp;
-}
-
-
-int main(int argc, char *argv[])
-{
-    int heapArr[] = {0, 1, 2, 3, 4, 5, 6 , 7, 8 ,9 ,10 , 11, 12, 13 ,14 ,15};
-    int size = sizeof(heapArr)/sizeof(int);
+    if(rightChild <= heap->size && heap->element[rightChild] > heap->element[maxNode])
+    {
+        maxNode = rightChild;
+    }
     
-    buildHeap(heapArr, size);
+    if(maxNode != pos)
+    {
+        swap(&heap->element[pos], &heap->element[maxNode]);
+        max_heapify(heap, maxNode);
+    }
 }
+
+
+void buildMaxHeap(heap_t *heap)
+{
+    if(heap == NULL || heap->element == NULL)
+        return;
+    
+    int i;
+    int size;
+    
+    size = heap->size;
+    
+    for(i=size/2; i > 0; i--)
+    {
+        max_heapify(heap, i);
+    }
+}
+
+
+heap_t* makeSampleHeap(int numOfNode)
+{
+    if(numOfNode < 0)
+        return NULL;
+    
+    int i=0;
+    heap_t* heap;
+    heap = (heap_t*)malloc(sizeof(heap_t));
+    
+    heap->size = numOfNode;
+    heap->element = malloc((numOfNode + 1) * sizeof(int));
+    
+    heap->element[0] = INT_MIN;
+    
+    for(i = 1; i < numOfNode + 1; i++)
+    {
+        heap->element[i] = i;
+    }
+    return heap;
+}
+
+
+bool isMaxHeap(heap_t *heap)
+{
+    
+    if(heap == NULL || heap->element == NULL)
+        return true;
+    
+    int leftChild;
+    int rightChild;
+    int pos;
+    int size;
+    
+    size = heap->size;
+    
+    for(pos = 1; pos < size + 1; pos++)
+    {
+        leftChild = 2 * pos;
+        rightChild = 2 * pos + 1;
+        
+        if(leftChild <= heap->size && heap->element[leftChild] > heap->element[pos])
+            return false;
+        
+        if(leftChild <= heap->size && heap->element[rightChild] > heap->element[pos])
+            return false;
+    }
+    
+    return true;
+}
+
+void printHeap(heap_t *heap)
+{
+    if(heap == NULL || heap->element == NULL)
+        return;
+    
+    int i;
+    int heapSize;
+    
+    heapSize = heap->size;
+    
+    for(i = 1; i < heapSize+1; i++)
+    {
+        printf("%d ", heap->element[i]);
+    }
+}
+
+
+int main(void)
+{
+    int numOfNode;
+    heap_t* heap;
+    
+    numOfNode = 10;
+    
+    heap = makeSampleHeap(numOfNode);
+    printHeap(heap);
+    printf("\n");
+    buildMaxHeap(heap);
+    printHeap(heap);
+    printf("\n");
+    printf("%s ", (isMaxHeap(heap)) ? "TRUE" : "FALSE");
+    printf("\n");
+    free(heap);
+
+  
+    
+}
+
+
+
 
